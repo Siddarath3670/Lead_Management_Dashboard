@@ -1,7 +1,10 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const dotenv = require('dotenv');
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import dotenv from 'dotenv';
+
+import authRoutes from './routes/authRoutes.js';
+import leadRoutes from './routes/leadRoutes.js';
 
 dotenv.config();
 
@@ -12,7 +15,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cors());
 
-// Database Connection
+// Database Connection (KEPT)
 const connectDB = async () => {
     try {
         mongoose.set('strictQuery', false);
@@ -25,9 +28,6 @@ const connectDB = async () => {
         process.exit(1);
     }
 };
-
-const authRoutes = require('./routes/authRoutes');
-const leadRoutes = require('./routes/leadRoutes');
 
 // Routes
 app.use('/api/auth', authRoutes);
@@ -46,4 +46,4 @@ if (process.env.NODE_ENV !== 'test') {
     });
 }
 
-module.exports = app;
+export default app;

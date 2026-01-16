@@ -1,14 +1,14 @@
-const express = require('express');
-const { getLeads, getLeadById, getDashboardStats } = require('../controllers/leadController').default;
-const { protect } = require('../middleware/authMiddleware').default; // Need to create middleware
-const router = express.Router();
+import { Router } from 'express';
+import leadController from '../controllers/leadController.js';
+import protect from '../middleware/authMiddleware.js';
 
-// Public for now effectively, or we add protect middleware.
-// Requirements say "Login screen (basic auth is fine)". 
-// I should add a simple protection middleware.
+const { getLeads, getLeadById, getDashboardStats } = leadController;
 
-router.get('/', getLeads);
-router.get('/dashboard', getDashboardStats); // Should be before /:id to avoid conflict
-router.get('/:id', getLeadById);
+const router = Router();
 
-module.exports = router;
+// Routes
+router.get('/', protect, getLeads);
+router.get('/dashboard', protect, getDashboardStats); // keep before /:id
+router.get('/:id', protect, getLeadById);
+
+export default router;
