@@ -76,12 +76,12 @@ const LeadsPage = () => {
                         <Input
                             placeholder="Search name or email..."
                             value={search}
-                            onChange={(e) => setSearch(e.target.value)}
+                            onChange={(e) => { setSearch(e.target.value); setPage(1); }}
                             className="md:w-64"
                         />
                         <Select
                             value={statusFilter}
-                            onChange={(e) => setStatusFilter(e.target.value)}
+                            onChange={(e) => { setStatusFilter(e.target.value); setPage(1); }}
                             className="md:w-40"
                         >
                             <option value="All">All Statuses</option>
@@ -93,7 +93,7 @@ const LeadsPage = () => {
                         </Select>
                         <Select
                             value={sort}
-                            onChange={(e) => setSort(e.target.value)}
+                            onChange={(e) => { setSort(e.target.value); setPage(1); }}
                             className="md:w-40"
                         >
                             <option value="createdAt:desc">Newest First</option>
