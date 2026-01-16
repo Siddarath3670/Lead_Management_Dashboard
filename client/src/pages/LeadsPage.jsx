@@ -67,7 +67,6 @@ const LeadsPage = () => {
         <div className="space-y-6">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <h2 className="text-3xl font-bold tracking-tight">Leads</h2>
-                <Button>Add New Lead</Button>
             </div>
 
             <Card>
@@ -149,12 +148,12 @@ const LeadsPage = () => {
                         ) : (
                             leads.map((lead) => (
                                 <div key={lead._id} className="border rounded-lg p-4 space-y-3 bg-card shadow-sm">
-                                    <div className="flex justify-between items-start">
-                                        <div>
-                                            <div className="font-semibold">{lead.name}</div>
-                                            <div className="text-sm text-muted-foreground">{lead.email}</div>
+                                    <div className="flex justify-between items-start gap-4">
+                                        <div className="min-w-0 flex-1">
+                                            <div className="font-semibold truncate">{lead.name}</div>
+                                            <div className="text-sm text-muted-foreground truncate">{lead.email}</div>
                                         </div>
-                                        <Badge variant={getStatusVariant(lead.status)}>{lead.status}</Badge>
+                                        <Badge variant={getStatusVariant(lead.status)} className="shrink-0">{lead.status}</Badge>
                                     </div>
                                     <div className="flex justify-between items-center text-sm text-muted-foreground">
                                         <div>{new Date(lead.createdAt).toLocaleDateString()}</div>

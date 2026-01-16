@@ -32,25 +32,28 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Outfit', system-ui, sans-serif;
 }
 
 :root {
-  /* Palette: 
-     03045e - Darkest Blue (Text/Foreground)
-     023e8a
-     0077b6 - Primary Brand
-     0096c7
-     00b4d8
-     48cae4 - Accent
-     90e0ef - Border/Input
-     ade8f4 - Secondary
-     caf0f8 - Lightest (Background tint)
+  /* 
+     User Provided Palette (Oceanic Gradient):
+     - Deep Twilight: #03045e (Text/Darkest)
+     - French Blue: #023e8a
+     - Bright Teal Blue: #0077b6 (Primary)
+     - Blue Green: #0096c7
+     - Turquoise Surf: #00b4d8
+     - Sky Aqua: #48cae4
+     - Frosted Blue: #90e0ef
+     - Light Cyan: #caf0f8 (Background/Lightest)
   */
 
-  --background: #ffffff;
-  /* White for clean light mode */
+  --background: #caf0f8;
+  /* Light Cyan (DEFAULT) */
   --foreground: #03045e;
-  /* Darkest Blue */
+  /* Deep Twilight (DEFAULT) */
 
   --card: #ffffff;
   --card-foreground: #03045e;
@@ -59,39 +62,50 @@
   --popover-foreground: #03045e;
 
   --primary: #0077b6;
-  /* Mid Blue */
+  /* Bright Teal Blue (DEFAULT) */
   --primary-foreground: #ffffff;
 
   --secondary: #ade8f4;
-  /* Light Blue */
-  --secondary-foreground: #0077b6;
-  /* Darker blue for contrast on secondary */
+  /* Frosted Blue (Lighter variant) */
+  --secondary-foreground: #023e8a;
+  /* French Blue */
 
-  --muted: #caf0f8;
-  /* Lightest Blue */
+  --muted: #90e0ef;
+  /* Frosted Blue (Darker variant) */
   --muted-foreground: #023e8a;
 
-  --accent: #caf0f8;
-  --accent-foreground: #0077b6;
+  --accent: #48cae4;
+  /* Sky Aqua */
+  --accent-foreground: #03045e;
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
 
-  --border: #90e0ef;
+  --border: #48cae4;
+  /* Sky Aqua - for visibility */
   --input: #90e0ef;
-  --ring: #0077b6;
+  --ring: #0096c7;
+  /* Blue Green */
 
-  --radius: 0.5rem;
+  --radius: 0.75rem;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   line-height: 1.5;
   margin: 0;
   display: block;
-  /* Fixed from 'flex' which was centering everything */
   min-width: 320px;
   min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Outfit', system-ui, sans-serif;
 }

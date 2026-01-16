@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
+import { LayoutGrid } from 'lucide-react';
 
 const LoginPage = () => {
     const [isLogin, setIsLogin] = useState(true);
@@ -40,33 +41,36 @@ const LoginPage = () => {
     };
 
     return (
-        <div className="relative flex items-center justify-center min-h-screen bg-gradient-to-br from-[#caf0f8] via-[#ade8f4] to-[#90e0ef] overflow-hidden">
-            {/* Decorative Background Elements */}
-            <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-[#00b4d8]/20 rounded-full blur-[100px]" />
-            <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-[#0077b6]/20 rounded-full blur-[100px]" />
-
-            <Card className="w-full max-w-md shadow-2xl border-0 bg-white/80 backdrop-blur-xl relative z-10 transition-all duration-300">
-                <CardHeader className="space-y-1 text-center pb-2">
-                    <CardTitle className="text-3xl font-bold tracking-tight text-[#03045e]">
-                        {isLogin ? 'Welcome Back' : 'Create Account'}
-                    </CardTitle>
-                    <CardDescription className="text-[#023e8a]/80">
-                        {isLogin ? 'Enter your credentials to access your dashboard' : 'Sign up to start managing your leads'}
-                    </CardDescription>
+        <div className="flex items-center justify-center min-h-screen bg-white font-sans">
+            <Card className="w-full max-w-md shadow-2xl border-0 bg-white">
+                <CardHeader className="space-y-4 text-center pb-6">
+                    <div className="flex justify-center">
+                        <div className="h-12 w-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                            <LayoutGrid className="h-6 w-6 text-primary" />
+                        </div>
+                    </div>
+                    <div className="space-y-2">
+                        <CardTitle className="text-2xl font-bold tracking-tight text-foreground font-heading">
+                            {isLogin ? 'Welcome to LeadManager' : 'Create an Account'}
+                        </CardTitle>
+                        <CardDescription className="text-muted-foreground">
+                            {isLogin ? 'Sign in to access your lead management dashboard' : 'Enter your details to create your account'}
+                        </CardDescription>
+                    </div>
                 </CardHeader>
                 <form onSubmit={handleSubmit}>
                     <CardContent className="space-y-4">
                         {error && (
-                            <div className="bg-[#caf0f8] text-[#03045e] p-3 rounded-md text-sm border border-[#90e0ef] animate-in fade-in slide-in-from-top-2">
+                            <div className="bg-destructive/10 text-destructive p-3 rounded-md text-sm border border-destructive/20">
                                 {error}
                             </div>
                         )}
 
                         {!isLogin && (
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-[#03045e]">Full Name</label>
+                                <label className="text-sm font-semibold text-foreground">Full Name</label>
                                 <Input
-                                    className="bg-white/50 border-[#ade8f4] focus:border-[#0077b6] focus:ring-[#0077b6]"
+                                    className="bg-secondary/20 border-border focus:border-primary focus:ring-primary"
                                     placeholder="John Doe"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
@@ -76,9 +80,9 @@ const LoginPage = () => {
                         )}
 
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-[#03045e]">Email</label>
+                            <label className="text-sm font-semibold text-foreground">Email</label>
                             <Input
-                                className="bg-white/50 border-[#ade8f4] focus:border-[#0077b6] focus:ring-[#0077b6]"
+                                className="bg-secondary/20 border-border focus:border-primary focus:ring-primary"
                                 type="email"
                                 placeholder="name@example.com"
                                 value={email}
@@ -87,9 +91,9 @@ const LoginPage = () => {
                             />
                         </div>
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-[#03045e]">Password</label>
+                            <label className="text-sm font-semibold text-foreground">Password</label>
                             <Input
-                                className="bg-white/50 border-[#ade8f4] focus:border-[#0077b6] focus:ring-[#0077b6]"
+                                className="bg-secondary/20 border-border focus:border-primary focus:ring-primary"
                                 type="password"
                                 placeholder="••••••••"
                                 value={password}
@@ -98,19 +102,27 @@ const LoginPage = () => {
                             />
                         </div>
                     </CardContent>
-                    <CardFooter className="flex flex-col space-y-4 pt-4">
-                        <Button type="submit" className="w-full bg-[#0077b6] hover:bg-[#023e8a] text-white shadow-lg shadow-[#0077b6]/30 transition-all active:scale-[0.98]">
-                            {isLogin ? 'Sign In' : 'Create Account'}
+                    <CardFooter className="flex flex-col space-y-4 pt-2">
+                        <Button type="submit" className="w-full shadow-lg hover:shadow-xl transition-all h-10 text-base font-medium">
+                            {isLogin ? 'Sign In' : 'Sign Up'}
                         </Button>
 
-                        <div className="text-center text-sm">
-                            <span className="text-muted-foreground">
+                        {isLogin && (
+                            <div className="w-full bg-secondary/30 p-4 rounded-lg text-sm text-muted-foreground space-y-1">
+                                <p className="font-semibold text-foreground">Demo Credentials:</p>
+                                <p>Email: <span className="font-mono text-primary">admin@example.com</span></p>
+                                <p>Password: <span className="font-mono text-primary">password123</span></p>
+                            </div>
+                        )}
+
+                        <div className="text-center text-sm text-muted-foreground">
+                            <span>
                                 {isLogin ? "Don't have an account? " : "Already have an account? "}
                             </span>
                             <button
                                 type="button"
                                 onClick={() => { setIsLogin(!isLogin); setError(''); }}
-                                className="font-semibold text-[#0077b6] hover:underline focus:outline-none"
+                                className="font-semibold text-primary hover:underline focus:outline-none"
                             >
                                 {isLogin ? 'Sign Up' : 'Log In'}
                             </button>
