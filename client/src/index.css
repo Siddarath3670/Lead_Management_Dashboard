@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+:root {
+  /* Palette: 
+     03045e - Darkest Blue (Text/Foreground)
+     023e8a
+     0077b6 - Primary Brand
+     0096c7
+     00b4d8
+     48cae4 - Accent
+     90e0ef - Border/Input
+     ade8f4 - Secondary
+     caf0f8 - Lightest (Background tint)
+  */
+
+  --background: #ffffff;
+  /* White for clean light mode */
+  --foreground: #03045e;
+  /* Darkest Blue */
+
+  --card: #ffffff;
+  --card-foreground: #03045e;
+
+  --popover: #ffffff;
+  --popover-foreground: #03045e;
+
+  --primary: #0077b6;
+  /* Mid Blue */
+  --primary-foreground: #ffffff;
+
+  --secondary: #ade8f4;
+  /* Light Blue */
+  --secondary-foreground: #0077b6;
+  /* Darker blue for contrast on secondary */
+
+  --muted: #caf0f8;
+  /* Lightest Blue */
+  --muted-foreground: #023e8a;
+
+  --accent: #caf0f8;
+  --accent-foreground: #0077b6;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: #90e0ef;
+  --input: #90e0ef;
+  --ring: #0077b6;
+
+  --radius: 0.5rem;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  display: block;
+  /* Fixed from 'flex' which was centering everything */
+  min-width: 320px;
+  min-height: 100vh;
+}
