@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const { faker } = require('@faker-js/faker');
-const User = require('./models/User');
-const Lead = require('./models/Lead');
+const User = require('./models/User').default;
+const Lead = require('./models/Lead').default;
 
 dotenv.config();
 

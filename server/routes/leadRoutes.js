@@ -1,6 +1,6 @@
 const express = require('express');
-const { getLeads, getLeadById, getDashboardStats } = require('../controllers/leadController');
-const { protect } = require('../middleware/authMiddleware'); // Need to create middleware
+const { getLeads, getLeadById, getDashboardStats } = require('../controllers/leadController').default;
+const { protect } = require('../middleware/authMiddleware').default; // Need to create middleware
 const router = express.Router();
 
 // Public for now effectively, or we add protect middleware.

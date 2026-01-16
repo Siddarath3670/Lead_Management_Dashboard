@@ -1,4 +1,4 @@
-const Lead = require('../models/Lead');
+import { countDocuments, find, findById, aggregate } from '../models/Lead';
 
 // @desc    Get all leads with search, filter, sort, pagination
 // @route   GET /api/leads
@@ -29,8 +29,8 @@ const getLeads = async (req, res) => {
             sortOption = { [field]: order === 'desc' ? -1 : 1 };
         }
 
-        const count = await Lead.countDocuments(query);
-        const leads = await Lead.find(query)
+        const count = await countDocuments(query);
+        const leads = await find(query)
             .sort(sortOption)
             .limit(Number(limit))
             .skip((Number(page) - 1) * Number(limit));
@@ -51,7 +51,7 @@ const getLeads = async (req, res) => {
 // @access  Private
 const getLeadById = async (req, res) => {
     try {
-        const lead = await Lead.findById(req.params.id);
+        const lead = await findById(req.params.id);
         if (lead) {
             res.json(lead);
         } else {
@@ -67,10 +67,10 @@ const getLeadById = async (req, res) => {
 // @access  Private
 const getDashboardStats = async (req, res) => {
     try {
-        const totalLeads = await Lead.countDocuments();
-        const convertedLeads = await Lead.countDocuments({ status: 'Closed' });
+        const totalLeads = await countDocuments();
+        const convertedLeads = await countDocuments({ status: 'Closed' });
 
-        const leadsByStatus = await Lead.aggregate([
+        const leadsByStatus = await aggregate([
             { $group: { _id: '$status', count: { $sum: 1 } } }
         ]);
 
@@ -84,4 +84,4 @@ const getDashboardStats = async (req, res) => {
     }
 };
 
-module.exports = { getLeads, getLeadById, getDashboardStats };
+export default { getLeads, getLeadById, getDashboardStats };

@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import { Schema, model } from 'mongoose';
 
-const leadSchema = mongoose.Schema({
+const leadSchema = Schema({
     name: {
         type: String,
         required: true,
@@ -36,6 +36,6 @@ const leadSchema = mongoose.Schema({
 // Index for search optimization
 leadSchema.index({ name: 'text', email: 'text', company: 'text' });
 
-const Lead = mongoose.model('Lead', leadSchema);
+const Lead = model('Lead', leadSchema);
 
-module.exports = Lead;
+export default Lead;

@@ -1,8 +1,8 @@
-const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+import { sign } from 'jsonwebtoken';
+import { findOne, create } from '../models/User';
 
 const generateToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET, {
+    return sign({ id }, process.env.JWT_SECRET, {
         expiresIn: '30d',
     });
 };
@@ -13,7 +13,7 @@ const generateToken = (id) => {
 const authUser = async (req, res) => {
     const { email, password } = req.body;
 
-    const user = await User.findOne({ email });
+    const user = await findOne({ email });
 
     if (user && (await user.matchPassword(password))) {
         res.json({
@@ -33,14 +33,14 @@ const authUser = async (req, res) => {
 const registerUser = async (req, res) => {
     const { name, email, password } = req.body;
 
-    const userExists = await User.findOne({ email });
+    const userExists = await findOne({ email });
 
     if (userExists) {
         res.status(400).json({ message: 'User already exists' });
         return;
     }
 
-    const user = await User.create({
+    const user = await create({
         name,
         email,
         password,
@@ -58,4 +58,4 @@ const registerUser = async (req, res) => {
     }
 };
 
-module.exports = { authUser, registerUser };
+export default { authUser, registerUser };
