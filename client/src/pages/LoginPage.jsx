@@ -5,6 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { LayoutGrid } from 'lucide-react';
 
+import { API_URL } from '../config';
+
 const LoginPage = () => {
     const [isLogin, setIsLogin] = useState(true);
     const [name, setName] = useState('');
@@ -21,7 +23,7 @@ const LoginPage = () => {
         const body = isLogin ? { email, password } : { name, email, password };
 
         try {
-            const res = await fetch(`http://localhost:5000/api/auth/${endpoint}`, {
+            const res = await fetch(`${API_URL}/api/auth/${endpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body),

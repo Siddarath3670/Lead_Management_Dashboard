@@ -6,6 +6,7 @@ import { Select } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
+import { API_URL } from '../config';
 
 const LeadsPage = () => {
     const [leads, setLeads] = useState([]);
@@ -38,7 +39,7 @@ const LeadsPage = () => {
             });
 
             try {
-                const res = await fetch(`http://localhost:5000/api/leads?${query}`, {
+                const res = await fetch(`${API_URL}/api/leads?${query}`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 const data = await res.json();

@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { API_URL } from '../config';
 
 const LeadDetailsPage = () => {
     const { id } = useParams();
@@ -16,7 +17,7 @@ const LeadDetailsPage = () => {
 
         const fetchLead = async () => {
             try {
-                const res = await fetch(`http://localhost:5000/api/leads/${id}`, {
+                const res = await fetch(`${API_URL}/api/leads/${id}`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 if (res.ok) {

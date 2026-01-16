@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import LeadsPage from './LeadsPage';
+import { API_URL } from '../config';
 
 const Dashboard = () => {
     const [stats, setStats] = useState(null);
@@ -11,7 +12,7 @@ const Dashboard = () => {
         const fetchStats = async () => {
             if (!token) return;
             try {
-                const res = await fetch('http://localhost:5000/api/leads/dashboard', {
+                const res = await fetch(`${API_URL}/api/leads/dashboard`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 if (res.ok) {
