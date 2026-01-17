@@ -38,9 +38,13 @@ cd lead-management-dashboard
    ```
 3. Create a `.env` file in the `server` root:
    ```env
-   PORT=5000
-   MONGO_URI=your_mongodb_connection_string
-   JWT_SECRET=your_jwt_secret_key
+### Backend (.env)
+MONGO_URI=
+JWT_SECRET=
+CLERK_SECRET_KEY=
+
+### Frontend (.env)
+VITE_API_BASE_URL=
    ```
 4. Seed the database (optional but recommended):
    ```bash
