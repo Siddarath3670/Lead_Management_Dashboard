@@ -41,6 +41,7 @@ cd lead-management-dashboard
    PORT=5000
    MONGO_URI=your_mongodb_connection_string
    JWT_SECRET=your_jwt_secret_key
+   VITE_API_BASE_URL=your_vite_url
    ```
 4. Seed the database (optional but recommended):
    ```bash
